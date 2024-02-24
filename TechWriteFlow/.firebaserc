@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "techwriteflowdev": {
+      "hosting": {
+        "tech-write-flow": [
+          "techwriteflowdev"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "techwriteflowdev"
+  }
+}

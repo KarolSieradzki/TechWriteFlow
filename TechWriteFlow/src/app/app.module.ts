@@ -7,6 +7,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { SharedModule } from './shared/shared.module';
 
+import { environment } from '../environments/environment';
+
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFunctions, provideFunctions } from '@angular/fire/functions';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +23,13 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    //Firebase imports:
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideStorage(() => getStorage())
   ],
   providers: [
     provideClientHydration(),
