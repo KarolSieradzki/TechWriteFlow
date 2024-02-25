@@ -1,0 +1,27 @@
+<h3>Set your unique account name that will be visible in the url: </h3>
+        <form [formGroup]="setUniqueNameForm" (ngSubmit)="submitUniqeName()">
+            <mat-form-field class="unique-name-field">
+                <mat-label>Name</mat-label>
+                <input matInput 
+                    formControlName="uniqueName" 
+                    type="text" 
+                    placeholder="" 
+                    autocomplete="off"
+                />
+
+                <mat-hint>Must be at least 2 characters</mat-hint>
+                <mat-error>
+                    This name is already taken
+                </mat-error>
+                
+              </mat-form-field>
+
+              <button
+              mat-raised-button
+              color="accent"
+              type="submit"
+            >
+              Submit
+            </button>
+        </form>
+        

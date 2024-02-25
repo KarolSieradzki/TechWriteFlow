@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'blog', 
     loadChildren: () => import('./blog-view/blog-view.module').then(m => m.BlogViewModule)
   },
+  {
+    path: 'profile-settings', 
+    loadChildren: () => import('./user-settings/user-settings.module').then(m => m.UserSettingsModule)
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 
