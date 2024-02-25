@@ -1,1 +1,35 @@
-<p>home-page works!</p>
+<main>
+    <div>
+        <h1>Tech Write flow</h1>
+
+        <h2>A place where you can present yourself</h2>
+    </div>
+
+    <div *ngIf="!(afAuth.authState | async)">
+        <h3>Go to platform:</h3>
+        <button appGoogleSignin mat-raised-button>
+            <img src="/assets/google-logo.svg"/>
+            Continue with Google
+        </button>
+    </div>
+
+    <div *ngIf="afAuth.authState | async as user">
+        <h3>Continue as:</h3>
+        <button mat-raised-button [routerLink]="['/admin-panel']">
+            <img [src]="user.photoURL"/>
+            {{user.displayName}}
+        </button>
+
+        <h3>OR</h3>
+
+        <button mat-stroked-button (click)="afAuth.signOut()">
+            Logout
+        </button>
+    </div>
+
+</main>
+
+
+
+
+
