@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   {
     path: 'admin-panel', 
-    loadChildren: () => import('./admin-panel/admin-panel.module').then(m => m.AdminPanelModule)
+    loadChildren: () => import('./admin-panel/admin-panel.module').then(m => m.AdminPanelModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'portfolio', 
@@ -19,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'profile-settings', 
-    loadChildren: () => import('./user-settings/user-settings.module').then(m => m.UserSettingsModule)
+    loadChildren: () => import('./user-settings/user-settings.module').then(m => m.UserSettingsModule),
+    canActivate: [AuthGuard]
   },
   { path: '**', component: PageNotFoundComponent }
 ];

@@ -14,15 +14,6 @@ export class SnackService {
     this.snackBar.open('You must be logged in!', 'OK', {
       duration: 5000
     });
-
-    // return this.snackBar._openedSnackBarRef
-    //   .onAction()
-    //   .pipe(
-    //     tap(_ =>
-    //       this.router.navigate(['/login'])
-    //     )
-    //   )
-    //   .subscribe();
   }
 
   aliasChanged(newAlias:string) {

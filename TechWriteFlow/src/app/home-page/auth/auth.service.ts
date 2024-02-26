@@ -11,11 +11,24 @@ import { Observable, of, switchMap } from 'rxjs';
 })
 export class AuthService {
 
+  user$: Observable<User | null | undefined> = of(null);
+
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore
-  ) { }
+  ) { 
+    this.user$ = this.afAuth.authState.pipe(switchMap(user => {
+      //if logged in
+      if (user) {
+        return this.userCollection.doc<User>(user.uid).valueChanges();
+      }
+      //if logged out
+      else {
+        return of(null);
+      }
+    }))
+  }
 
   userCollection: AngularFirestoreCollection<User> = this.firestore.collection<User>("User");
 
@@ -30,7 +43,7 @@ export class AuthService {
       await this.createUserDocument(credential.user);
     }
       
-    this.router.navigate(['/admin-page']);
+    this.router.navigate(['/admin-panel']);
   }
 
   async userExist(uid: string):Promise<boolean>{
