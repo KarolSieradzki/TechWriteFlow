@@ -1,6 +1,6 @@
-<div class="contaier">
+<div class="contaier" *ngIf="(afAuth.authState | async)">
 
-    <div class="setting" [class.highlighted-option] ="highlightedOption == this.settingsOptions.alias" #uniqueName>
+    <div class="setting"  [class.highlighted-option] ="highlightedOption == this.settingsOptions.alias" #uniqueName>
         <app-set-alias></app-set-alias>
    </div>
 

@@ -27,7 +27,7 @@ export class SettingsPageComponent implements OnInit{
 
   constructor(
     private route:ActivatedRoute,
-    private afAuth: AngularFireAuth,
+    public afAuth: AngularFireAuth,
     private fb: FormBuilder,
     public settings: AccountSettingsService
   ){}

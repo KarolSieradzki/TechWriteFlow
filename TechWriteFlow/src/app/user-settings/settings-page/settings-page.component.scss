@@ -1,4 +1,20 @@
+
 .highlighted-option{
     border: 3px solid #e69049;
     border-radius: 10px;
+}
+
+:host {
+    text-align: center;
+}
+
+.setting{
+    text-align: left;
+    border: 2px solid #c8cacb;
+    border-radius: 10px;
+    padding: 10px;
+    width: fit-content;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
 }

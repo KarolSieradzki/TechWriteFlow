@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import firebase from 'firebase/compat/app';
 import { User } from './user';
 import { Router } from '@angular/router';
+import { Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
