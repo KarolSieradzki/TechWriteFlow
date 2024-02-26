@@ -41,6 +41,8 @@ export class AuthService {
 
     if (!(await this.userExist(credential.user.uid))){
       await this.createUserDocument(credential.user);
+      this.router.navigate(['/profile-settings/alias']);
+      return;
     }
       
     this.router.navigate(['/admin-panel']);
