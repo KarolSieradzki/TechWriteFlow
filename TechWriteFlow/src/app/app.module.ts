@@ -18,7 +18,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { GoogleSigninDirective } from './shared/auth/google-signin.directive';
+import { GoogleSigninDirective } from './home-page/auth/google-signin.directive';
 
 @NgModule({
   declarations: [

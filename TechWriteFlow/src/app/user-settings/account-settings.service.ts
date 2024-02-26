@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { User as IUser } from '../shared/auth/user';
+import { User as IUser } from '../home-page/auth/user';
 import { error } from 'node:console';
 import firebase from 'firebase/compat/app';
 
@@ -67,8 +67,6 @@ export class AccountSettingsService {
   Update alias in user document
   */
   async setNewAliasForCurrentUser(alias: string) {
-    console.log("setting alias")
-
     let currentAlias: string = await this.getCurrentUserAlias();
 
     //check if current alias is taken, if yes delete it
