@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, 
 import { AccountSettingsService } from '../../account-settings.service';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { SnackService } from '../../../services/snack/snack.service';
 
 
 function uniqueAliasValidator(settings: AccountSettingsService): AsyncValidatorFn {
@@ -41,6 +42,7 @@ export class SetAliasComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private snack: SnackService,
     public settings: AccountSettingsService
   ) { }
 
@@ -62,6 +64,8 @@ export class SetAliasComponent implements OnInit {
       let newAlias: string = this.setAliasForm.get('alias').value;
       await this.settings.setNewAliasForCurrentUser(newAlias);
       this.currentAlias = await this.settings.getCurrentUserAlias();
+
+      this.snack.aliasChanged(this.currentAlias);
     }
   }
 
