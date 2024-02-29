@@ -23,9 +23,41 @@
 }
 
 .logo{
-    background-color: #303030;
-    color: #fff;
-    border-radius: 10px;
-    padding: 7px 10px 7px 10px;
+    // background-color: #303030;
+    // color: #fff;
+    // border-radius: 10px;
+    // padding: 7px 10px 7px 10px;
     cursor: pointer;
+}
+
+.user-photo{
+    border-radius: 7px;
+    height: 40px;
+    transition: 0.3s;
+}
+
+.user-photo-container{
+    display: inline-block;
+    cursor: pointer;
+}
+
+.user-name{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.user-info-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.right-side {
+    position: absolute;
+    height: 100%;
+    right: 10px;
+}
+
+.logo-img{
+    height: 45px;
 }

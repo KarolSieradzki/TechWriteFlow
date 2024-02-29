@@ -2,7 +2,9 @@
 <mat-toolbar *ngIf="afAuth.authState | async as user">
 
 
-  <span class="logo" routerLink="/">{{siteName}}</span>
+  <span class="logo" routerLink="/">
+    <img class="logo-img" src="./assets/logo.png" alt="">
+  </span>
 
   <span class="fill-space"></span>
 
@@ -16,11 +18,24 @@
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
 
+  <div class="right-side">
+    <div class="user-info-container">
+      <div class="user-name" *ngIf="!(isHandset$ | async)">
+        {{user.displayName}}
+      </div>
+      <div class="user-photo-container" [routerLink]="['/profile-settings']">
+        <img [src]="user.photoURL" class="user-photo">
+      </div>
+    </div>
+  </div>
+
 </mat-toolbar>
 
 
 
 <!-- IF NOT LGGED IN -->
 <mat-toolbar *ngIf="!(afAuth.authState | async)">
-  <span class="logo" routerLink="/">{{siteName}}</span>
+  <span class="logo" routerLink="/">
+    <img class="logo-img" src="./assets/logo.png" alt="">
+  </span>
 </mat-toolbar>
