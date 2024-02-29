@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, map, shareReplay } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
-  selector: 'app-shell',
-  templateUrl: './shell.component.html',
-  styleUrl: './shell.component.scss'
+  selector: 'app-topbar',
+  templateUrl: './topbar.component.html',
+  styleUrl: './topbar.component.scss'
 })
-export class ShellComponent {
+export class TopBarComponent {
 
   siteName = "TechWriteFlow"; 
 
-  constructor(private breakpointObserver: BreakpointObserver){}
+  constructor(
+    public afAuth: AngularFireAuth,
+    private breakpointObserver: BreakpointObserver
+  ){}
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Handset])
     .pipe(

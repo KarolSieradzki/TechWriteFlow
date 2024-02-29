@@ -1,0 +1,26 @@
+<!-- IF LOGGED IN -->
+<mat-toolbar *ngIf="afAuth.authState | async as user">
+
+
+  <span class="logo" routerLink="/">{{siteName}}</span>
+
+  <span class="fill-space"></span>
+
+  <div *ngIf="!(isHandset$ | async)">
+    <a mat-button routerLink="/">Main Page</a>
+  </div>
+
+  <span class="fill-space"></span>
+
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+
+
+<!-- IF NOT LGGED IN -->
+<mat-toolbar *ngIf="!(afAuth.authState | async)">
+  <span class="logo" routerLink="/">{{siteName}}</span>
+</mat-toolbar>
