@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
-import { User } from './user';
+import { User } from '../../shared/firestore-models/user.model';
 import { Router } from '@angular/router';
 import { Observable, of, switchMap } from 'rxjs';
 
@@ -33,7 +33,10 @@ export class AuthService {
   userCollection: AngularFirestoreCollection<User> = this.firestore.collection<User>("User");
 
   /*
-    Logs into a google account, if the account does not yet exist creates a new user document
+    Logs into a google account, if the account does not yet exist creates:
+    - new user document 
+    - blog document
+    - portfolio document
   */
   async googleSignin() {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -41,6 +44,9 @@ export class AuthService {
 
     if (!(await this.userExist(credential.user.uid))){
       await this.createUserDocument(credential.user);
+
+      // TODO
+
       this.router.navigate(['/profile-settings/alias']);
       return;
     }

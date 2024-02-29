@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { User as IUser } from '../home-page/auth/user';
+import { User as IUser } from '../shared/firestore-models/user.model';
 import { error } from 'node:console';
 import firebase from 'firebase/compat/app';
 
