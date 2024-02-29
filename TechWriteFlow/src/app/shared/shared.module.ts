@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { TopBarComponent } from './topbar/topbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const components = [
   TopBarComponent
@@ -34,7 +35,8 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatSnackBarModule,
-  RouterModule
+  RouterModule,
+  HttpClientModule
 ];
 
 @NgModule({

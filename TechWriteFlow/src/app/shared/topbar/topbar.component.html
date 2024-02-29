@@ -6,24 +6,53 @@
     <img class="logo-img" src="./assets/logo.png" alt="">
   </span>
 
-  <span class="fill-space"></span>
+  <span class="space"></span>
 
-  <div *ngIf="!(isHandset$ | async)">
-    <a mat-button routerLink="/">Main Page</a>
+  <div *ngIf="!(isHandset$ | async)" class="nav-options">
+    <a mat-button routerLink="/admin-panel">
+      <mat-icon svgIcon="sliders-solid"></mat-icon>
+      <span class="nav-text">Overview</span>
+    </a>
+    <a mat-button routerLink="/admin-panel/portfolio">
+      <mat-icon svgIcon="address-card-regular"></mat-icon>
+      Portfolio
+    </a>
+    <a mat-button routerLink="/admin-panel/blog">
+      <mat-icon svgIcon="user-pen-solid"></mat-icon>
+      Blog
+    </a>
   </div>
 
-  <span class="fill-space"></span>
-
-  <button type="button" aria-label="Toggle sidenav" mat-icon-button *ngIf="isHandset$ | async">
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button *ngIf="isHandset$ | async"
+    [matMenuTriggerFor]="menu">
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <a mat-button routerLink="/admin-panel">
+        <mat-icon svgIcon="sliders-solid"></mat-icon>
+        <span class="nav-text">Overview</span>
+      </a>
+    </button>
+    <button mat-menu-item><a mat-button routerLink="/admin-panel/portfolio">
+        <mat-icon svgIcon="address-card-regular"></mat-icon>
+        Portfolio
+      </a></button>
+    <button mat-menu-item>
+      <a mat-button routerLink="/admin-panel/blog">
+        <mat-icon svgIcon="user-pen-solid"></mat-icon>
+        Blog
+      </a>
+    </button>
+  </mat-menu>
 
   <div class="right-side">
     <div class="user-info-container">
       <div class="user-name" *ngIf="!(isHandset$ | async)">
         {{user.displayName}}
       </div>
-      <div class="user-photo-container" [routerLink]="['/profile-settings']">
+      <div class="user-photo-container" [routerLink]="['/profile-settings']" >
         <img [src]="user.photoURL" class="user-photo">
       </div>
     </div>

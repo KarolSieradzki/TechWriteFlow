@@ -22,7 +22,7 @@
     z-index: 1;
 }
 
-.logo{
+.logo {
     // background-color: #303030;
     // color: #fff;
     // border-radius: 10px;
@@ -30,23 +30,23 @@
     cursor: pointer;
 }
 
-.user-photo{
+.user-photo {
     border-radius: 7px;
     height: 40px;
     transition: 0.3s;
 }
 
-.user-photo-container{
+.user-photo-container {
     display: inline-block;
     cursor: pointer;
 }
 
-.user-name{
+.user-name {
     display: inline-block;
     margin-right: 10px;
 }
 
-.user-info-container{
+.user-info-container {
     height: 100%;
     display: flex;
     align-items: center;
@@ -58,6 +58,28 @@
     right: 10px;
 }
 
-.logo-img{
+.logo-img {
     height: 45px;
+}
+
+.icon {
+    height: 15px;
+    background-color: #2f3753;
+    background-color: #ffffff00;
+}
+
+.nav-text {
+    vertical-align: middle;
+}
+
+.nav-options {
+    display: flex;
+    align-items: center;
+    background-color: #0505050e;
+    border-radius: 10px;
+    padding: 3px 10px 3px 10px;
+}
+
+.space {
+    margin-left: 15px;
 }
