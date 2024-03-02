@@ -20,11 +20,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { UserInfoDialogComponent } from './user-info/user-info-dialog/user-info-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { ProjectPreviewComponent } from './project-preview/project-preview.component';
 
 const components = [
   TopBarComponent,
   UserInfoComponent,
-  UserInfoDialogComponent
+  UserInfoDialogComponent,
+  ProjectPreviewComponent
 ];
 
 const modules = [

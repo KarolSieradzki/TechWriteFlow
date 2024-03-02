@@ -1,1 +1,26 @@
-<app-user-info [displayName]="'Karol Sieradzki'" [description]="''" [editable]="true"></app-user-info>
+<app-user-info 
+    *ngIf="user"
+    [displayName]="user.displayName!" 
+    [description]="user.description!" 
+    [photoURL]="user.photoURL!" 
+    [editable]="true">
+</app-user-info>
+
+<div class="projects-container">
+    <button mat-stroked-button class="new-proj-butt" 
+        [routerLink]="'create-project'"
+        [class.new-proj-butt-handset]="(isHandset$ | async) === true">
+        <mat-icon svgIcon="plus-solid"></mat-icon>
+        Add new project
+    </button>
+
+
+    <div *ngFor="let project of projects">
+        <app-project-preview 
+            [title]="project.title!"
+            [description]="project.description!"
+            [imageURL]="project.imageURL!"
+            [date]="project.date!"
+        ></app-project-preview>
+    </div>
+</div>

@@ -1,12 +1,11 @@
 <div class="user-info-container" *ngIf="!(isHandset$ | async)">
     <div>
-        <button mat-stroked-button *ngIf="editable==true" class="edit-button" (click)="openEditDialog()">
+        <button mat-stroked-button *ngIf="editable==true" class="edit-button" [routerLink]="'/profile-settings/your-info'">
             <mat-icon svgIcon="pen-to-square-regular"></mat-icon>Edit profile informations
         </button>
     </div>
 
-
-    <img class="user-img" src="/assets/camel.png" alt="">
+    <img class="user-img" [src]="photoURL" [alt]="displayName">
 
     <div class="text">
         <h2>{{displayName}}</h2>
@@ -18,13 +17,14 @@
 </div>
 
 <div class="user-info-container-handset" *ngIf="(isHandset$ | async)">
-    <img class="user-img-handset" src="/assets/camel.png" alt="">
 
     <div>
-        <button mat-button *ngIf="editable==true" class="edit-button-handset">
-            <mat-icon svgIcon="pen-to-square-regular"></mat-icon>Edit
+        <button mat-stroked-button *ngIf="editable==true" class="edit-button-handset" [routerLink]="'/profile-settings/your-info'">
+            <mat-icon svgIcon="pen-to-square-regular"></mat-icon>Edit profile informations
         </button>
     </div>
+
+    <img class="user-img-handset" [src]="photoURL" [alt]="displayName">
 
     <div class="text-handset">
         <h2>{{displayName}}</h2>
@@ -33,3 +33,5 @@
         </p>
     </div>
 </div>
+
+<div style="clear: both;"></div>

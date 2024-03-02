@@ -1,1 +1,7 @@
-<p>portfolio-page works!</p>
+<div *ngIf="!portfolioExist || (!portfolioPublic && portfolioLoaded)">
+    <app-portfolio-not-found></app-portfolio-not-found>
+</div>
+
+<div *ngIf="portfolioExist && portfolioPublic">
+    portfolio.public = {{portfolio.public}}
+</div>

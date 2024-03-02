@@ -3,5 +3,6 @@ export interface User{
     email?: string,
     displayName?: string,
     photoURL?: string,
-    alias?: string
+    alias?: string,
+    description?: string
 }

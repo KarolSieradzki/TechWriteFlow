@@ -14,9 +14,10 @@ import { UserInfoDialogComponent } from './user-info-dialog/user-info-dialog.com
 })
 export class UserInfoComponent {
 
-  @Input() displayName:string = '';
-  @Input() description:string = '';
-  @Input() editable:boolean = false;
+  @Input() displayName: string = '';
+  @Input() description: string = '';
+  @Input() photoURL: string = '';
+  @Input() editable: boolean = false;
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -24,7 +25,7 @@ export class UserInfoComponent {
     private matIconRegistry: MatIconRegistry,
     private domSanitzer: DomSanitizer,
     public dialog: MatDialog
-  ){
+  ) {
     this.matIconRegistry.addSvgIcon(
       'pen-to-square-regular',
       this.domSanitzer.bypassSecurityTrustResourceUrl('../../../assets/icons/pen-to-square-regular.svg')
@@ -37,17 +38,17 @@ export class UserInfoComponent {
       shareReplay()
     );
 
-    openEditDialog(){
-      const dialogRef = this.dialog.open(UserInfoDialogComponent, {
-        width: '400px',
-        data: {displayName: this.displayName, description: this.description}
-      });
+  openEditDialog() {
+    const dialogRef = this.dialog.open(UserInfoDialogComponent, {
+      width: '400px',
+      data: { displayName: this.displayName, description: this.description }
+    });
 
-      dialogRef.afterClosed().subscribe(result=>{
-        if(result){
-          this.displayName = result.displayName;
-          this.description = result.description
-        }
-      })
-    }
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.displayName = result.displayName;
+        this.description = result.description
+      }
+    })
+  }
 }

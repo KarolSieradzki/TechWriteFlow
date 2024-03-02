@@ -79,7 +79,8 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      alias: user.uid
+      alias: user.uid,
+      description: ''
     }
 
     await this.userCollection.ref.doc(user.uid)

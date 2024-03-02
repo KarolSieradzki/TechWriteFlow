@@ -1,0 +1,32 @@
+<div class="proj-info-container">
+    <mat-form-field style="width: 100%">
+        <mat-label>Project Name</mat-label>
+        <input type="text" placeholder="Project Name" matInput [(ngModel)]="projectName">
+    </mat-form-field>
+
+
+    <mat-form-field style="width: 100%">
+        <mat-label>Project Date</mat-label>
+        <input type="date" placeholder="Date" matInput [(ngModel)]="projectDate">
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%">
+        <mat-label>Project Short Description</mat-label>
+        <textarea placeholder="Description" matInput [(ngModel)]="projectDescription" rows="3"></textarea>
+    </mat-form-field>
+
+</div>
+
+<div class="editor-container">
+    <mat-label>Write about your project:</mat-label>
+    <editor 
+        [init]="editorConf" 
+        id="new-proj-editor" 
+        [(ngModel)]="editorContent">
+    </editor>
+
+</div>
+
+<div class="options-bar-container">
+    <button mat-raised-button (click)="save()">Save</button>
+</div>
