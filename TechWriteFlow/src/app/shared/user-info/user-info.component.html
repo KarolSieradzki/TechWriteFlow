@@ -1,0 +1,35 @@
+<div class="user-info-container" *ngIf="!(isHandset$ | async)">
+    <div>
+        <button mat-stroked-button *ngIf="editable==true" class="edit-button" (click)="openEditDialog()">
+            <mat-icon svgIcon="pen-to-square-regular"></mat-icon>Edit profile informations
+        </button>
+    </div>
+
+
+    <img class="user-img" src="/assets/camel.png" alt="">
+
+    <div class="text">
+        <h2>{{displayName}}</h2>
+
+        <p>
+            {{description}}
+        </p>
+    </div>
+</div>
+
+<div class="user-info-container-handset" *ngIf="(isHandset$ | async)">
+    <img class="user-img-handset" src="/assets/camel.png" alt="">
+
+    <div>
+        <button mat-button *ngIf="editable==true" class="edit-button-handset">
+            <mat-icon svgIcon="pen-to-square-regular"></mat-icon>Edit
+        </button>
+    </div>
+
+    <div class="text-handset">
+        <h2>{{displayName}}</h2>
+        <p class="description-handset">
+            {{description}}
+        </p>
+    </div>
+</div>

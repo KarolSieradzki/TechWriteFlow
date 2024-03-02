@@ -1,0 +1,55 @@
+.user-img{
+    position: relative;
+    overflow: hidden;
+    float: left;
+    border-radius: 50%;
+    margin: 10px;
+    shape-outside: circle();
+    height: 170px;
+}
+
+.user-img-handset{
+    position: relative;
+    border-radius: 50%;
+    margin: 5px;
+    height: 170px;
+}
+
+.text{
+    font-size: 1em;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+.text-handset{
+    font-size: 1em;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.user-info-container{
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.user-info-container-handset{
+    text-align: center;
+}
+
+.description-handset{
+    // text-align: left;
+    text-justify: center;
+}
+
+.edit-button{
+    width: 100%;
+    // background-color: #bebebe;
+    margin-top: 10px;
+}
+
+.edit-button-handset{
+    font-size: 1em !important;
+}

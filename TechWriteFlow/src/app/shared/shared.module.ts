@@ -12,13 +12,19 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule  } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { TopBarComponent } from './topbar/topbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { UserInfoDialogComponent } from './user-info/user-info-dialog/user-info-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 const components = [
-  TopBarComponent
+  TopBarComponent,
+  UserInfoComponent,
+  UserInfoDialogComponent
 ];
 
 const modules = [
@@ -34,9 +40,11 @@ const modules = [
   MatCardModule,
   MatFormFieldModule,
   MatInputModule,
+  MatDialogModule,
   MatSnackBarModule,
   RouterModule,
-  HttpClientModule
+  HttpClientModule,
+  FormsModule
 ];
 
 @NgModule({
