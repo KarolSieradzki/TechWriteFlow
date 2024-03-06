@@ -1,26 +1,25 @@
 <div class="proj-info-container">
     <mat-form-field style="width: 100%">
         <mat-label>Project Name</mat-label>
-        <input type="text" placeholder="Project Name" matInput [(ngModel)]="projectName">
+        <input type="text" placeholder="Project Name" matInput [(ngModel)]="projectName" required="true">
     </mat-form-field>
 
-
     <mat-form-field style="width: 100%">
-        <mat-label>Project Date</mat-label>
-        <input type="date" placeholder="Date" matInput [(ngModel)]="projectDate">
+        <mat-label>Project date (MM/DD/YYYY)</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="projectDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field style="width: 100%">
         <mat-label>Project Short Description</mat-label>
-        <textarea placeholder="Description" matInput [(ngModel)]="projectDescription" rows="3"></textarea>
+        <textarea placeholder="Description" matInput [(ngModel)]="projectDescription" rows="3"
+            required="true"></textarea>
     </mat-form-field>
 
     <div class="project-photo">
         <mat-label for="projectImage">Set your project photo</mat-label>
-        <app-user-image-control #projectImage
-            [width]="300" 
-            [height]="200" 
-            (imageReady)="imageReady($event)">
+        <app-user-image-control #projectImage [width]="300" [height]="200" (imageReady)="imageReady($event)">
         </app-user-image-control>
     </div>
 

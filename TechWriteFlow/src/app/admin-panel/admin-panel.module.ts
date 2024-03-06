@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
 import { OverviewComponent } from './overview/overview.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { BlogComponent } from './blog/blog.component';
 import { SharedModule } from '../shared/shared.module';
-import { ProjectPreviewComponent } from '../shared/project-preview/project-preview.component';
 import { CreateProjectComponent } from './portfolio/create-project/create-project.component';
 import { EditorModule, TINYMCE_SCRIPT_SRC  } from '@tinymce/tinymce-angular';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageCropperDialogComponent } from './portfolio/image-cropper-dialog/image-cropper-dialog.component';
 import { UserImageControlComponent } from './portfolio/user-image-control/user-image-control.component';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -21,17 +21,20 @@ import { UserImageControlComponent } from './portfolio/user-image-control/user-i
     BlogComponent,
     CreateProjectComponent,
     ImageCropperDialogComponent,
-    UserImageControlComponent
+    UserImageControlComponent,
   ],
   imports: [
     CommonModule,
     AdminPanelRoutingModule,
     SharedModule,
     EditorModule,
-    ImageCropperModule
+    ImageCropperModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers:[
-    {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}
+    {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'},
+    MatDatepickerModule
   ]
 })
 export class AdminPanelModule { }

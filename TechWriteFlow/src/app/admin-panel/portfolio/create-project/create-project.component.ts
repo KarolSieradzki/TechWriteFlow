@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-create-project',
@@ -7,7 +8,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class CreateProjectComponent {
   projectName: string | null = null;
-  projectDate: Date = new Date;
+  projectDate: Date | null = null;
   projectDescription: string | null = null;
   projectPhoto: Blob | null = null!;
   editorContent: any = '';
@@ -20,8 +21,9 @@ export class CreateProjectComponent {
   }
 
   constructor(
-
-  ){}
+  ){
+    this.projectDate = new Date();
+  }
 
   save(){
     console.log(this.projectName)
@@ -29,6 +31,11 @@ export class CreateProjectComponent {
     console.log(this.projectDescription)
     console.log(this.projectPhoto)
     console.log(this.editorContent)
+
+  }
+
+  onDateChange(event: MatDatepickerInputEvent<Date>) {
+    this.projectDate = event.value;
   }
 
   imageReady(blob: Blob){
