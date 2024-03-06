@@ -6,9 +6,10 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrl: './create-project.component.scss'
 })
 export class CreateProjectComponent {
-  projectName: string = '';
+  projectName: string | null = null;
   projectDate: Date = new Date;
-  projectDescription: string = '';
+  projectDescription: string | null = null;
+  projectPhoto: Blob | null = null!;
   editorContent: any = '';
   @ViewChild('new-proj-editor') editor0a1b!: ElementRef;
 
@@ -26,6 +27,11 @@ export class CreateProjectComponent {
     console.log(this.projectName)
     console.log(this.projectDate)
     console.log(this.projectDescription)
+    console.log(this.projectPhoto)
     console.log(this.editorContent)
+  }
+
+  imageReady(blob: Blob){
+    this.projectPhoto = blob;
   }
 }

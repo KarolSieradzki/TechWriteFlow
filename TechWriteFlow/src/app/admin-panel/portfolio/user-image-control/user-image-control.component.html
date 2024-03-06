@@ -1,0 +1,18 @@
+<div class="control-container" [style.width]="imageWidth() + 'px'">
+    <div class="image-container" (click)="inputField.click()">
+      <img
+        [src]="imageSource()"
+        [width]="imageWidth()"
+        [height]="imageHeight()"
+      />
+    </div>
+
+    <input
+      #inputField
+      hidden
+      type="file"
+      (change)="fileSelected($event)"
+      (click)="inputField.value = ''"
+    />
+
+</div>

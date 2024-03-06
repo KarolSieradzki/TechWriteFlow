@@ -15,14 +15,21 @@
         <textarea placeholder="Description" matInput [(ngModel)]="projectDescription" rows="3"></textarea>
     </mat-form-field>
 
+    <div class="project-photo">
+        <mat-label for="projectImage">Set your project photo</mat-label>
+        <app-user-image-control #projectImage
+            [width]="300" 
+            [height]="200" 
+            (imageReady)="imageReady($event)">
+        </app-user-image-control>
+    </div>
+
+
 </div>
 
 <div class="editor-container">
     <mat-label>Write about your project:</mat-label>
-    <editor 
-        [init]="editorConf" 
-        id="new-proj-editor" 
-        [(ngModel)]="editorContent">
+    <editor [init]="editorConf" id="new-proj-editor" [(ngModel)]="editorContent">
     </editor>
 
 </div>

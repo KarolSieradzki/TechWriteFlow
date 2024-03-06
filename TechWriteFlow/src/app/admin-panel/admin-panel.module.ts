@@ -9,6 +9,9 @@ import { SharedModule } from '../shared/shared.module';
 import { ProjectPreviewComponent } from '../shared/project-preview/project-preview.component';
 import { CreateProjectComponent } from './portfolio/create-project/create-project.component';
 import { EditorModule, TINYMCE_SCRIPT_SRC  } from '@tinymce/tinymce-angular';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ImageCropperDialogComponent } from './portfolio/image-cropper-dialog/image-cropper-dialog.component';
+import { UserImageControlComponent } from './portfolio/user-image-control/user-image-control.component';
 
 
 @NgModule({
@@ -16,13 +19,16 @@ import { EditorModule, TINYMCE_SCRIPT_SRC  } from '@tinymce/tinymce-angular';
     OverviewComponent,
     PortfolioComponent,
     BlogComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    ImageCropperDialogComponent,
+    UserImageControlComponent
   ],
   imports: [
     CommonModule,
     AdminPanelRoutingModule,
     SharedModule,
-    EditorModule
+    EditorModule,
+    ImageCropperModule
   ],
   providers:[
     {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}
