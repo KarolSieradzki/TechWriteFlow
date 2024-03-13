@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
 import { OverviewComponent } from './overview/overview.component';
@@ -13,6 +13,7 @@ import { ImageCropperDialogComponent } from './portfolio/image-cropper-dialog/im
 import { UserImageControlComponent } from './portfolio/user-image-control/user-image-control.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [

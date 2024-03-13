@@ -3,5 +3,6 @@ export interface Project{
     title?: string,
     description?: string,
     imageURL?: string,
-    date?: Date
+    date?: Date,
+    content?: string
 }

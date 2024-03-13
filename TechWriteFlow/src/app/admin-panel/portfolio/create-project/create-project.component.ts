@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { AdminPanelService } from '../../admin-panel.service';
+import { Project } from '../../../shared/firestore-models/project.model';
 
 @Component({
   selector: 'app-create-project',
@@ -21,6 +23,7 @@ export class CreateProjectComponent {
   }
 
   constructor(
+    private adminPanelService: AdminPanelService
   ){
     this.projectDate = new Date();
   }
@@ -31,6 +34,12 @@ export class CreateProjectComponent {
     console.log(this.projectDescription)
     console.log(this.projectPhoto)
     console.log(this.editorContent)
+
+    let project:Project={
+      content: this.editorContent
+    }
+
+    this.adminPanelService.createNewProject(project)
 
   }
 
