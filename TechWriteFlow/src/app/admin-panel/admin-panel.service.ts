@@ -3,46 +3,64 @@ import { Project } from '../shared/firestore-models/project.model';
 import {
   AngularFireStorage
 } from '@angular/fire/compat/storage';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminPanelService {
 
-  constructor(private storage: AngularFireStorage) { }
+  projectsCollection: AngularFirestoreCollection<Project> = this.firestore.collection<Project>("Project");
 
-  //Creates new project document
+  constructor(private storage: AngularFireStorage, private firestore: AngularFirestore) { }
+
+  // Creates new project document
   async createNewProject(project: Project) {
+    let { fileMap, html } = this.changeBase64ImagesToFilePaths(project.content!);
+    const projectId = this.firestore.createId();
 
-    let { fileMap, html } = this.changeBase64ImagesToFilePaths(project.content!)
-    console.log(fileMap)
-    console.log(html)
+    console.log(fileMap);
+    console.log(html);
 
-    await this.saveAllContentImages(fileMap, "project/x")
+    const imageLinksMap = await this.saveAllContentImages(fileMap, `project/${projectId}`);
 
-    console.log("saved", )
+    // Replace image names in HTML with their corresponding URLs
+    for (const [fileName, url] of imageLinksMap.entries()) {
+      html = html.replace(fileName, url);
+    }
 
+    // Save the project to Firestore
+    project.content = html
+    try {
+      await this.projectsCollection.doc(projectId).ref.set(project);
+      console.log("Project saved successfully with ID:", projectId);
+    } catch (error) {
+      console.error("Error saving project:", error);
+    }
   }
 
-  private async saveAllContentImages(fileMap: Map<string, Blob>, path: string) {
+  private async saveAllContentImages(fileMap: Map<string, Blob>, path: string): Promise<Map<string, string>> {
+    const imageLinksMap = new Map<string, string>();
+
     for (const [fileName, blob] of fileMap.entries()) {
       try {
-        await this.saveImageToFireStorage(path, fileName, blob);
+        const url = await this.saveImageToFireStorage(path, fileName, blob);
+        imageLinksMap.set(fileName, url);
       } catch (error) {
         console.error("Error saving image", fileName, error);
       }
     }
+
+    return imageLinksMap;
   }
 
-  private async saveImageToFireStorage(path: string, fileName: string, blob: Blob) {
-
-    const storageRef = this.storage.ref(path + "/" + fileName);
+  private async saveImageToFireStorage(path: string, fileName: string, blob: Blob): Promise<string> {
+    const storageRef = this.storage.ref(`${path}/${fileName}`);
     const uploadTask = await storageRef.put(blob);
-    const downloadUrl = storageRef.getDownloadURL().subscribe(url=>{
-      console.log(url)
-    })
+    const downloadUrl = await storageRef.getDownloadURL().toPromise(); // Change to toPromise() to get the URL directly
 
-    console.log(downloadUrl)
+    console.log("Uploaded image URL: ", downloadUrl);
+    return downloadUrl;
   }
 
   private changeBase64ImagesToFilePaths(html: string): { fileMap: Map<string, Blob>, html: string } {

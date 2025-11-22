@@ -36,7 +36,11 @@ export class CreateProjectComponent {
     console.log(this.editorContent)
 
     let project:Project={
-      content: this.editorContent
+      content: this.editorContent,
+      title: this.projectName!,
+      description: this.projectDescription!,
+      
+
     }
 
     this.adminPanelService.createNewProject(project)
